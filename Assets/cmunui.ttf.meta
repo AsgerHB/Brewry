@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ed1cdaab53a944f7b8fd1baf9a7fd05f
+timeCreated: 1512241645
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: CMU Serif Upright Italic
+  fontNames:
+  - CMU Serif Upright Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

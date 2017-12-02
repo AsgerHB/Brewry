@@ -36,7 +36,7 @@ public class Dragger : MonoBehaviour
 
 	void Grab(Vector3 mousePosition)
 	{
-		RaycastHit2D ray = Physics2D.Raycast(_main.transform.position, mousePosition);
+		RaycastHit2D ray = Physics2D.Raycast(mousePosition, new Vector3(mousePosition.x, mousePosition.y,0));
 
 		if (ray.transform == null)
 			return;

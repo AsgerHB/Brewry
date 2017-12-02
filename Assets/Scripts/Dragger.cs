@@ -6,8 +6,6 @@ public class Dragger : MonoBehaviour
 {
 	private Camera _main;
 	private Draggable _draggable;
-	private Vector3 _mousePosition;
-	private Vector3 _previousMousePosition;
 	
 	public Vector3 TargetPosition;
 	
@@ -21,26 +19,24 @@ public class Dragger : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		_mousePosition = _main.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 mousePosition = _main.ScreenToWorldPoint(Input.mousePosition);
 		
-		TargetPosition = new Vector3(_mousePosition.x, _mousePosition.y);
+		TargetPosition = new Vector3(mousePosition.x, mousePosition.y);
 
 		if (Input.GetButtonDown("Fire1"))
 		{
-			Grab();
+			Grab(mousePosition);
 		}
 
 		if (_draggable != null && Input.GetButtonUp("Fire1"))
 		{
 			Release();
 		}
-		
-		_previousMousePosition = _mousePosition;
 	}
 
-	void Grab()
+	void Grab(Vector3 mousePosition)
 	{
-		RaycastHit2D ray = Physics2D.Raycast(_main.transform.position, _mousePosition);
+		RaycastHit2D ray = Physics2D.Raycast(_main.transform.position, mousePosition);
 
 		if (ray.transform == null)
 			return;
@@ -57,15 +53,6 @@ public class Dragger : MonoBehaviour
 	void Release()
 	{
 		_draggable.DraggedBy = null;
-		
-		/*if (_draggable.Rigidbody2D != null)
-		{
-			_draggable.Rigidbody2D.velocity = 
-				new Vector2(
-					(_mousePosition.x - _previousMousePosition.x) * Time.deltaTime,
-					(_mousePosition.y - _previousMousePosition.y) * Time.deltaTime)
-				*100;
-		}*/
 		
 		_draggable = null;
 	}

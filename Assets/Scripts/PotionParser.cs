@@ -7,10 +7,20 @@ using UnityEngine.UI;
 
 public class PotionParser : MonoBehaviour
 {
-
     public GameObject MessageBox;
     public Text TargetText;
     public Cauldron Cauldron;
+
+    private Objective _objective;
+    
+    private void Start()
+    {
+        var objectiveGameObject = GameObject.FindGameObjectWithTag("Objective");
+        if (objectiveGameObject != null)
+        {
+            _objective = objectiveGameObject.GetComponent<Objective>();
+        }
+    }
 
     public void ParsePotion()
     {
@@ -31,6 +41,10 @@ public class PotionParser : MonoBehaviour
 
         Cauldron.Clear();
 
+        if (_objective != null)
+        {
+            _objective.CheckObjective(effectSchema);
+        }
     }
 
     private string CalcMessage(int[] es)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,21 @@ public class PotionParser : MonoBehaviour
     {
         Dictionary<Reagent.ReagentType, int> reagents = Cauldron.Reagents;
 
+        String debug = "";
+        foreach (KeyValuePair<Reagent.ReagentType, int> rea in reagents)
+        {
+            debug += rea.Value + " : ";
+        }
+        Debug.Log("Regent input = " + debug);
+
         EffectSchema es = CalcEffectSchema(reagents);
 
         String mes = CalcMessage(es);
 
         Message(mes);
+
+        Cauldron.Clear();
+
     }
 
     private string CalcMessage(EffectSchema es)
@@ -27,12 +38,28 @@ public class PotionParser : MonoBehaviour
         String output = "The customer ";
         int effects = 0;
 
+        String debug = "";
+        for (int i = 0; i < es.Values.Length; i++)
+        {
+            debug += es.Values[i] + " : ";
+        }
+        Debug.Log("Count = " + debug);
+
+
+        int effectCount = es.Values.Where(x => x != 0).Count();
+
+        Debug.Log("Eff Count = " + effectCount);
+
         for (int i = 0; i < Effect.effectCount; i++)
         {
 
             if (es.Values[i] > 1)
             {
-                if (effects > 0)
+                if (effects == (effectCount - 1) && effectCount > 1)
+                {
+                    output += " and ";
+                }
+                else if (effects > 0)
                 {
                     output += ", ";
                 }
@@ -63,7 +90,11 @@ public class PotionParser : MonoBehaviour
             }
             else if (es.Values[i] < -1)
             {
-                if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
+                if (effects == (effectCount - 1) && effectCount > 1)
+                {
+                    output += " and ";
+                }
+                else if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
                 {
                     output += ", ";
                 }
@@ -89,7 +120,11 @@ public class PotionParser : MonoBehaviour
             }
             else if (es.Values[i] == 1)
             {
-                if (effects > 0)
+                if (effects == (effectCount - 1) && effectCount > 1)
+                {
+                    output += " and ";
+                }
+                else if (effects > 0)
                 {
                     output += ", ";
                 }
@@ -121,7 +156,11 @@ public class PotionParser : MonoBehaviour
             }
             else if (es.Values[i] == -1)
             {
-                if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
+                if (effects == (effectCount - 1) && effectCount > 1)
+                {
+                    output += " and ";
+                }
+                else if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
                 {
                     output += ", ";
                 }

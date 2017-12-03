@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : MonoBehaviour
+public class Effect
 {
 
     public const int effectCount = 6;
@@ -18,15 +18,4 @@ public class Effect : MonoBehaviour
 	}
 
 	public EffectType Type;
-    public int Value;
-        	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

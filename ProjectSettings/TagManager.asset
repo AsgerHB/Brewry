@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CauldronGlow
   - Cauldron
+  - Objective
   layers:
   - Default
   - TransparentFX

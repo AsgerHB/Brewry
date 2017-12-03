@@ -11,3 +11,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/game.unity
     guid: 26c75777f4ad045668eb02888b8c1463
+  - enabled: 1
+    path: Assets/Levels/Level2.unity
+    guid: 3c63f5798fc31d64892916c04cae196c
+  - enabled: 1
+    path: Assets/Levels/Level3.unity
+    guid: 9ab7aa44d2a1dc64b8ae47e814f5810a
+  - enabled: 1
+    path: Assets/Levels/Level4.unity
+    guid: 7c710224c75863b48b763f71b7c3a10c
+  - enabled: 1
+    path: Assets/Levels/Level5.unity
+    guid: 320909bf7a6f63546a420a019f8296dd
+  - enabled: 1
+    path: Assets/Levels/Level6.unity
+    guid: 4b639f2f81c5c2642be03b36a203358e
+  - enabled: 1
+    path: Assets/Levels/Level7.unity
+    guid: 7410e7a5fb3781845b781ad04349a890
+  - enabled: 1
+    path: Assets/Levels/Level8.unity
+    guid: 5a70df5035a1a5444842ce309c349cd9
+  - enabled: 1
+    path: Assets/Levels/Level9.unity
+    guid: 545c49e77aabfd04f8f604ad207a7550

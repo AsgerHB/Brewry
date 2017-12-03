@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PotionParser : MonoBehaviour
 {
 
+	public GameObject MessageBox;
 	public Text TargetText;
 	public Cauldron Cauldron;
 	
@@ -13,9 +14,14 @@ public class PotionParser : MonoBehaviour
 	{
 		Dictionary<Reagent.ReagentType, int> reagents = Cauldron.Reagents;
 		
-		TargetText.text = "The ingredients in your laboratory are either plastic, water, or both, " +
-		       "but the placebo effect keeps your customers happy";
+	
+		Message("The ingredients in your laboratory are either plastic, water, or both, " +
+		        "but the placebo effect keeps your customers happy");
+	}
 
-		TargetText.gameObject.SetActive(true);
+	void Message(string message)
+	{
+		MessageBox.gameObject.SetActive(true);
+		TargetText.text = message;
 	}
 }

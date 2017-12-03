@@ -90,8 +90,6 @@ public class PotionParser : MonoBehaviour
             }
             else if (es[i] < -1)
             {
-                if ((Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
-                {
                     if (effects == (effectCount - 1) && effectCount > 1)
                     {
                         output += " and ";
@@ -100,7 +98,6 @@ public class PotionParser : MonoBehaviour
                     {
                         output += ", ";
                     }
-                }
 
                 switch ((Effect.EffectType)i)
                 {
@@ -141,7 +138,7 @@ public class PotionParser : MonoBehaviour
                         output += "is healthy";
                         break;
                     case Effect.EffectType.Age:
-                        output += "is visible aging";
+                        output += "is visibly aging";
                         break;
                     case Effect.EffectType.Petrification:
                         output += "has turned to stone";
@@ -159,7 +156,6 @@ public class PotionParser : MonoBehaviour
             }
             else if (es[i] == -1)
             {
-                if ((Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout) {
                     if (effects == (effectCount - 1) && effectCount > 1)
                     {
                         output += " and ";
@@ -168,7 +164,6 @@ public class PotionParser : MonoBehaviour
                     {
                         output += ", ";
                     }
-                }   
 
                 switch ((Effect.EffectType)i)
                 {
@@ -239,6 +234,9 @@ public class PotionParser : MonoBehaviour
                     output[(int)Effect.EffectType.Age] += rea.Value * -1;
                     break;
             }
+
+            output[(int)Effect.EffectType.Sprout] = Mathf.Max(0, output[(int)Effect.EffectType.Sprout]);
+            output[(int)Effect.EffectType.Petrification] = Mathf.Max(0, output[(int)Effect.EffectType.Petrification]);
         }
 
         String debug = "";

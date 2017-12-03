@@ -249,7 +249,7 @@ public class PotionParser : MonoBehaviour
         return output;
     }
 
-    void Message(string message)
+    public void Message(string message)
     {
         MessageBox.gameObject.SetActive(true);
         TargetText.text = message;

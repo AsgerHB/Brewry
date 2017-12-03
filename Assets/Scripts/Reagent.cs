@@ -18,6 +18,8 @@ public class Reagent : MonoBehaviour
 
 	public ReagentType Type;
 	public Color Colour;
+	[HideInInspector] 
+	public bool AlreadyAdded = false;
 	
 	// Use this for initialization
 	void Start () {

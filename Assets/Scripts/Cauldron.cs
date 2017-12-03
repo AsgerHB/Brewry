@@ -32,6 +32,10 @@ public class Cauldron : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		Reagent reagent = other.GetComponent<Reagent>();
+		if (reagent.AlreadyAdded)
+			return;
+		
+		reagent.AlreadyAdded = true;
 		
 		if (reagent == null)
 			return;
@@ -44,7 +48,8 @@ public class Cauldron : MonoBehaviour
 			(Glow.color.b*2 + reagent.Colour.b)/3,
 			175);
 		
-		IngredientAdded.Invoke();
 		Destroy(reagent.gameObject);
+		
+		IngredientAdded.Invoke();
 	}
 }

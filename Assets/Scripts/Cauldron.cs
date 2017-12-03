@@ -35,23 +35,8 @@ public class Cauldron : MonoBehaviour
 		
 		if (reagent == null)
 			return;
-        
-        System.String debug = "";
-        foreach (KeyValuePair<Reagent.ReagentType, int> rea in Reagents)
-        {
-            debug += rea.Value + " : ";
-        }
-        Debug.Log("Reagents Before: " + debug);
 
         Reagents[reagent.Type]++;
-
-        debug = "";
-        foreach (KeyValuePair<Reagent.ReagentType, int> rea in Reagents)
-        {
-            debug += rea.Value + " : ";
-        }
-        Debug.Log("Reagents After: " + debug);
-
 
         Glow.color = new Color(
 			(Glow.color.r*2 + reagent.Colour.r)/3, 

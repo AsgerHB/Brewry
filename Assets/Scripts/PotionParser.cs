@@ -64,7 +64,7 @@ public class PotionParser : MonoBehaviour
                     output += ", ";
                 }
                 // Overdose message
-                switch ((Effect.EffectType) i)
+                switch ((Effect.EffectType)i)
                 {
                     case Effect.EffectType.Fire:
                         output += "has burst into flames";
@@ -90,13 +90,16 @@ public class PotionParser : MonoBehaviour
             }
             else if (es[i] < -1)
             {
-                if (effects == (effectCount - 1) && effectCount > 1)
+                if ((Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
                 {
-                    output += " and ";
-                }
-                else if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
-                {
-                    output += ", ";
+                    if (effects == (effectCount - 1) && effectCount > 1)
+                    {
+                        output += " and ";
+                    }
+                    else if (effects > 0)
+                    {
+                        output += ", ";
+                    }
                 }
 
                 switch ((Effect.EffectType)i)
@@ -141,7 +144,7 @@ public class PotionParser : MonoBehaviour
                         output += "is visible aging";
                         break;
                     case Effect.EffectType.Petrification:
-                        output += "has turned into stone";
+                        output += "has turned to stone";
                         break;
                     case Effect.EffectType.Size:
                         output += "is becoming taller";
@@ -156,14 +159,16 @@ public class PotionParser : MonoBehaviour
             }
             else if (es[i] == -1)
             {
-                if (effects == (effectCount - 1) && effectCount > 1)
-                {
-                    output += " and ";
-                }
-                else if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
-                {
-                    output += ", ";
-                }
+                if ((Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout) {
+                    if (effects == (effectCount - 1) && effectCount > 1)
+                    {
+                        output += " and ";
+                    }
+                    else if (effects > 0)
+                    {
+                        output += ", ";
+                    }
+                }   
 
                 switch ((Effect.EffectType)i)
                 {
@@ -197,39 +202,51 @@ public class PotionParser : MonoBehaviour
         foreach (KeyValuePair<Reagent.ReagentType, int> rea in reagents)
         {
 
+            Debug.Log("Next reagent = " + rea.Value);
+
             switch (rea.Key)
             {
                 case Reagent.ReagentType.Crystal:
-                    output[(int)Effect.EffectType.Fire]--;
-                    output[(int)Effect.EffectType.Sprout]--;
+                    Debug.Log("Fire = " + (int)Effect.EffectType.Fire);
+                    Debug.Log("output[0] = " + output[(int)Effect.EffectType.Fire]);
+                    output[(int)Effect.EffectType.Fire] += rea.Value * -1;
+                    output[(int)Effect.EffectType.Sprout] += rea.Value * -1;
+                    Debug.Log("output[0] = " + output[(int)Effect.EffectType.Fire]);
                     break;
                 case Reagent.ReagentType.Eyeball:
-                    output[(int)Effect.EffectType.Petrification]++;
+                    output[(int)Effect.EffectType.Petrification] += rea.Value;
                     break;
                 case Reagent.ReagentType.Mushroom:
-                    output[(int)Effect.EffectType.Size]++;
+                    output[(int)Effect.EffectType.Size] += rea.Value;
                     break;
                 case Reagent.ReagentType.Root:
-                    output[(int)Effect.EffectType.Sprout]++;
-                    output[(int)Effect.EffectType.Size]++;
+                    output[(int)Effect.EffectType.Sprout] += rea.Value;
+                    output[(int)Effect.EffectType.Size] += rea.Value;
                     break;
                 case Reagent.ReagentType.Rose:
-                    output[(int)Effect.EffectType.Fire]++;
-                    output[(int)Effect.EffectType.Health]++;
+                    output[(int)Effect.EffectType.Fire] += rea.Value;
+                    output[(int)Effect.EffectType.Health] += rea.Value;
                     break;
                 case Reagent.ReagentType.Skull:
-                    output[(int)Effect.EffectType.Size]--;
-                    output[(int)Effect.EffectType.Age]++;
+                    output[(int)Effect.EffectType.Size] += rea.Value * -1;
+                    output[(int)Effect.EffectType.Age] += rea.Value;
                     break;
                 case Reagent.ReagentType.Spider:
-                    output[(int)Effect.EffectType.Health]--;
-                    output[(int)Effect.EffectType.Petrification]--;
+                    output[(int)Effect.EffectType.Health] += rea.Value * -1;
+                    output[(int)Effect.EffectType.Petrification] += rea.Value * -1;
                     break;
                 case Reagent.ReagentType.Urn:
-                    output[(int)Effect.EffectType.Age]--;
+                    output[(int)Effect.EffectType.Age] += rea.Value * -1;
                     break;
             }
         }
+
+        String debug = "";
+        for (int i = 0; i < output.Length; i++)
+        {
+            debug += output[i] + " : ";
+        }
+        Debug.Log("Count = " + debug);
 
         return output;
     }

@@ -13,7 +13,6 @@ public class Reagent : MonoBehaviour {
 		Skull,
 		Root,
 		Eyeball,
-        Spider
 	}
 
 	public ReagentType Type;

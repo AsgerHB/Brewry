@@ -41,7 +41,12 @@ public class Dragger : MonoBehaviour
 		if (ray.transform == null)
 			return;
 			
-		ThingBeingDragged = ray.transform.GetComponent<Draggable>();
+		Draggable hit = ray.transform.GetComponent<Draggable>();
+
+		if (hit == null)
+			return;
+		
+		ThingBeingDragged = hit;
 
 		if (ThingBeingDragged == null)
 			return;

@@ -2,22 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reagent : MonoBehaviour {
+public class EffectSchema : MonoBehaviour {
 
-	public enum ReagentType
-	{
-		Urn,
-		Rose,
-		Crystal,
-		Mushroom,
-		Skull,
-		Root,
-		Eyeball,
-        Spider
-	}
-
-	public ReagentType Type;
-	
+    public int[] Values = new int[Effect.effectCount];
+        	
 	// Use this for initialization
 	void Start () {
 		

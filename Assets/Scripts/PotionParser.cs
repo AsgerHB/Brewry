@@ -146,8 +146,8 @@ public class PotionParser : MonoBehaviour
                 effects++;
             }
 
-            output += ".";
         }
+        output += ".";
         return output;
     }
 

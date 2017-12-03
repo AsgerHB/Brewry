@@ -40,33 +40,48 @@ public class PotionParser : MonoBehaviour
                 switch ((Effect.EffectType) i)
                 {
                     case Effect.EffectType.Fire:
-                        output += "is on fire"
+                        output += "has burst into flames";
                         break;
                     case Effect.EffectType.Health:
-                        output += "is on ?"
+                        output += "became so healthy that their heart exploded";
                         break;
                     case Effect.EffectType.Age:
-                        output += "is turning to dust"
+                        output += "aged so rapidly that they are now a pile of dust";
                         break;
                     case Effect.EffectType.Petrification:
-                        output += "is on ?"
+                        output += "is now a rock";
                         break;
                     case Effect.EffectType.Size:
-                        output += "is on ?"
+                        output += "is now a giant";
                         break;
                     case Effect.EffectType.Sprout:
-                        output += "is on ?"
+                        output += "is turning into a beautiful oak tree";
                         break;
                 }
-                
 
                 effects++;
             }
             else if (es.Values[i] < -1)
             {
-                if (effects > 0)
+                if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
                 {
                     output += ", ";
+                }
+
+                switch ((Effect.EffectType)i)
+                {
+                    case Effect.EffectType.Fire:
+                        output += "is now a block of ice";
+                        break;
+                    case Effect.EffectType.Health:
+                        output += "has died";
+                        break;
+                    case Effect.EffectType.Age:
+                        output += "has reverse aged into an infant";
+                        break;
+                    case Effect.EffectType.Size:
+                        output += "is now a giant";
+                        break;
                 }
 
                 // Underdose message
@@ -79,14 +94,52 @@ public class PotionParser : MonoBehaviour
                     output += ", ";
                 }
 
+                switch ((Effect.EffectType)i)
+                {
+                    case Effect.EffectType.Fire:
+                        output += "is on fire";
+                        break;
+                    case Effect.EffectType.Health:
+                        output += "is healthy";
+                        break;
+                    case Effect.EffectType.Age:
+                        output += "is visible aging";
+                        break;
+                    case Effect.EffectType.Petrification:
+                        output += "has turned into stone";
+                        break;
+                    case Effect.EffectType.Size:
+                        output += "is becoming taller";
+                        break;
+                    case Effect.EffectType.Sprout:
+                        output += "has begone sprouting leaves";
+                        break;
+                }
+
                 // Effect message
                 effects++;
             }
             else if (es.Values[i] == -1)
             {
-                if (effects > 0)
+                if (effects > 0 && (Effect.EffectType)i != Effect.EffectType.Petrification && (Effect.EffectType)i != Effect.EffectType.Sprout)
                 {
                     output += ", ";
+                }
+
+                switch ((Effect.EffectType)i)
+                {
+                    case Effect.EffectType.Fire:
+                        output += "is freezing and have blue lips";
+                        break;
+                    case Effect.EffectType.Health:
+                        output += "is not feeling well";
+                        break;
+                    case Effect.EffectType.Age:
+                        output += "is feeling like they are at the peak of their youth";
+                        break;
+                    case Effect.EffectType.Size:
+                        output += "is getting smaller";
+                        break;
                 }
 
                 // Unfect message
@@ -107,33 +160,33 @@ public class PotionParser : MonoBehaviour
             switch (rea.Key)
             {
                 case Reagent.ReagentType.Crystal:
-                    output.FireValue--;
-                    output.SproutValue--;
+                    output.Values[(int)Effect.EffectType.Fire]--;
+                    output.Values[(int)Effect.EffectType.Sprout]--;
                     break;
                 case Reagent.ReagentType.Eyeball:
-                    output.PetrificationValue++;
+                    output.Values[(int)Effect.EffectType.Petrification]++;
                     break;
                 case Reagent.ReagentType.Mushroom:
-                    output.SizeValue++;
+                    output.Values[(int)Effect.EffectType.Size]++;
                     break;
                 case Reagent.ReagentType.Root:
-                    output.SproutValue++;
-                    output.SizeValue++;
+                    output.Values[(int)Effect.EffectType.Sprout]++;
+                    output.Values[(int)Effect.EffectType.Size]++;
                     break;
                 case Reagent.ReagentType.Rose:
-                    output.FireValue++;
-                    output.HealthValue++;
+                    output.Values[(int)Effect.EffectType.Fire]++;
+                    output.Values[(int)Effect.EffectType.Health]++;
                     break;
                 case Reagent.ReagentType.Skull:
-                    output.SizeValue--;
-                    output.AgeValue++;
+                    output.Values[(int)Effect.EffectType.Size]--;
+                    output.Values[(int)Effect.EffectType.Age]++;
                     break;
                 case Reagent.ReagentType.Spider:
-                    output.HealthValue--;
-                    output.PetrificationValue--;
+                    output.Values[(int)Effect.EffectType.Health]--;
+                    output.Values[(int)Effect.EffectType.Petrification]--;
                     break;
                 case Reagent.ReagentType.Urn:
-                    output.AgeValue--;
+                    output.Values[(int)Effect.EffectType.Age]--;
                     break;
             }
         }

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b34bc65f90143ed895428ce550578b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 5
   Colour: {r: 0.986207, g: 0, b: 1, a: 0}
 --- !u!212 &212441215955857740
 SpriteRenderer:

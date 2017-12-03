@@ -23,9 +23,9 @@ public class PotionParser : MonoBehaviour
         }
         Debug.Log("Regent input = " + debug);
 
-        EffectSchema es = CalcEffectSchema(reagents);
+        int[] effectSchema = CalcEffectSchema(reagents);
 
-        String mes = CalcMessage(es);
+        String mes = CalcMessage(effectSchema);
 
         Message(mes);
 
@@ -33,27 +33,27 @@ public class PotionParser : MonoBehaviour
 
     }
 
-    private string CalcMessage(EffectSchema es)
+    private string CalcMessage(int[] es)
     {
         String output = "The customer ";
         int effects = 0;
 
         String debug = "";
-        for (int i = 0; i < es.Values.Length; i++)
+        for (int i = 0; i < es.Length; i++)
         {
-            debug += es.Values[i] + " : ";
+            debug += es[i] + " : ";
         }
         Debug.Log("Count = " + debug);
 
 
-        int effectCount = es.Values.Where(x => x != 0).Count();
+        int effectCount = es.Where(x => x != 0).Count();
 
         Debug.Log("Eff Count = " + effectCount);
 
         for (int i = 0; i < Effect.effectCount; i++)
         {
 
-            if (es.Values[i] > 1)
+            if (es[i] > 1)
             {
                 if (effects == (effectCount - 1) && effectCount > 1)
                 {
@@ -88,7 +88,7 @@ public class PotionParser : MonoBehaviour
 
                 effects++;
             }
-            else if (es.Values[i] < -1)
+            else if (es[i] < -1)
             {
                 if (effects == (effectCount - 1) && effectCount > 1)
                 {
@@ -118,7 +118,7 @@ public class PotionParser : MonoBehaviour
                 // Underdose message
                 effects++;
             }
-            else if (es.Values[i] == 1)
+            else if (es[i] == 1)
             {
                 if (effects == (effectCount - 1) && effectCount > 1)
                 {
@@ -154,7 +154,7 @@ public class PotionParser : MonoBehaviour
                 // Effect message
                 effects++;
             }
-            else if (es.Values[i] == -1)
+            else if (es[i] == -1)
             {
                 if (effects == (effectCount - 1) && effectCount > 1)
                 {
@@ -190,9 +190,9 @@ public class PotionParser : MonoBehaviour
         return output;
     }
 
-    private EffectSchema CalcEffectSchema(Dictionary<Reagent.ReagentType, int> reagents)
+    private int[] CalcEffectSchema(Dictionary<Reagent.ReagentType, int> reagents)
     {
-        EffectSchema output = new EffectSchema();
+            int[] output = new int[Effect.effectCount];
 
         foreach (KeyValuePair<Reagent.ReagentType, int> rea in reagents)
         {
@@ -200,33 +200,33 @@ public class PotionParser : MonoBehaviour
             switch (rea.Key)
             {
                 case Reagent.ReagentType.Crystal:
-                    output.Values[(int)Effect.EffectType.Fire]--;
-                    output.Values[(int)Effect.EffectType.Sprout]--;
+                    output[(int)Effect.EffectType.Fire]--;
+                    output[(int)Effect.EffectType.Sprout]--;
                     break;
                 case Reagent.ReagentType.Eyeball:
-                    output.Values[(int)Effect.EffectType.Petrification]++;
+                    output[(int)Effect.EffectType.Petrification]++;
                     break;
                 case Reagent.ReagentType.Mushroom:
-                    output.Values[(int)Effect.EffectType.Size]++;
+                    output[(int)Effect.EffectType.Size]++;
                     break;
                 case Reagent.ReagentType.Root:
-                    output.Values[(int)Effect.EffectType.Sprout]++;
-                    output.Values[(int)Effect.EffectType.Size]++;
+                    output[(int)Effect.EffectType.Sprout]++;
+                    output[(int)Effect.EffectType.Size]++;
                     break;
                 case Reagent.ReagentType.Rose:
-                    output.Values[(int)Effect.EffectType.Fire]++;
-                    output.Values[(int)Effect.EffectType.Health]++;
+                    output[(int)Effect.EffectType.Fire]++;
+                    output[(int)Effect.EffectType.Health]++;
                     break;
                 case Reagent.ReagentType.Skull:
-                    output.Values[(int)Effect.EffectType.Size]--;
-                    output.Values[(int)Effect.EffectType.Age]++;
+                    output[(int)Effect.EffectType.Size]--;
+                    output[(int)Effect.EffectType.Age]++;
                     break;
                 case Reagent.ReagentType.Spider:
-                    output.Values[(int)Effect.EffectType.Health]--;
-                    output.Values[(int)Effect.EffectType.Petrification]--;
+                    output[(int)Effect.EffectType.Health]--;
+                    output[(int)Effect.EffectType.Petrification]--;
                     break;
                 case Reagent.ReagentType.Urn:
-                    output.Values[(int)Effect.EffectType.Age]--;
+                    output[(int)Effect.EffectType.Age]--;
                     break;
             }
         }

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cauldron : MonoBehaviour
 {
 	public Dictionary<Reagent.ReagentType, int> Reagents = new Dictionary<Reagent.ReagentType, int>();
 	public SpriteRenderer Glow;
+	public UnityEvent IngredientAdded;
 
 	private void Start()
 	{
@@ -57,6 +59,7 @@ public class Cauldron : MonoBehaviour
 			(Glow.color.b*2 + reagent.Colour.b)/3,
 			175);
 		
+		IngredientAdded.Invoke();
 		Destroy(reagent.gameObject);
 	}
 }

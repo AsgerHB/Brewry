@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
+  Colour: {r: 0, g: 0.006896496, b: 1, a: 0}
 --- !u!212 &212968723375440916
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
+  Colour: {r: 0.034482718, g: 1, b: 0, a: 0}
 --- !u!114 &114669877255490268
 MonoBehaviour:
   m_ObjectHideFlags: 1

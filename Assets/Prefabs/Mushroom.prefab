@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 212317034654670512}
   - component: {fileID: 114036494960528606}
   - component: {fileID: 50315358218225904}
-  - component: {fileID: 61030636637786668}
   - component: {fileID: 114141988449699156}
+  - component: {fileID: 70383782556994446}
+  - component: {fileID: 70165739977492348}
   m_Layer: 0
   m_Name: Ingredient
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108993681757982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.03, y: 1.44, z: 0}
+  m_LocalPosition: {x: -51.43, y: 3.88, z: 0}
   m_LocalScale: {x: 0.8587071, y: 0.858707, z: 0.858707}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,8 +65,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61030636637786668
-BoxCollider2D:
+--- !u!70 &70165739977492348
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,19 +77,24 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.55}
-  m_SpriteTilingProperty:
-    border: {x: 0.56, y: 0, z: 0.55, w: 1.04}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 2.56, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.05, y: 1.34}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.07, y: 0.2}
+  m_Size: {x: 0.46, y: 1.81}
+  m_Direction: 0
+--- !u!70 &70383782556994446
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108993681757982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 1.25, y: 0.91}
+  m_Direction: 1
 --- !u!114 &114036494960528606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72bf5b9c4c5844d488729890fe7d0f61, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e899234963574b508231da129440330, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Dragger : MonoBehaviour
 {
 	private Camera _main;
-	private Draggable _draggable;
 	
+	public Draggable ThingBeingDragged;
 	public Vector3 TargetPosition;
 	
 	
@@ -28,7 +28,7 @@ public class Dragger : MonoBehaviour
 			Grab(mousePosition);
 		}
 
-		if (_draggable != null && Input.GetButtonUp("Fire1"))
+		if (ThingBeingDragged != null && Input.GetButtonUp("Fire1"))
 		{
 			Release();
 		}
@@ -36,24 +36,24 @@ public class Dragger : MonoBehaviour
 
 	void Grab(Vector3 mousePosition)
 	{
-		RaycastHit2D ray = Physics2D.Raycast(mousePosition, new Vector3(mousePosition.x, mousePosition.y,0));
+		RaycastHit2D ray = Physics2D.Raycast(mousePosition, Vector2.zero);
 
 		if (ray.transform == null)
 			return;
 			
-		_draggable = ray.transform.GetComponent<Draggable>();
+		ThingBeingDragged = ray.transform.GetComponent<Draggable>();
 
-		if (_draggable == null)
+		if (ThingBeingDragged == null)
 			return;
 			
-		_draggable.DraggedBy = this;
+		ThingBeingDragged.DraggedBy = this;
 	}
 
 
 	void Release()
 	{
-		_draggable.DraggedBy = null;
+		ThingBeingDragged.DraggedBy = null;
 		
-		_draggable = null;
+		ThingBeingDragged = null;
 	}
 }

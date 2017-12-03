@@ -21,6 +21,7 @@ public class PotionParser : MonoBehaviour
 
 	void Message(string message)
 	{
+		Debug.Log(message);
 		MessageBox.gameObject.SetActive(true);
 		TargetText.text = message;
 	}

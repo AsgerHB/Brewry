@@ -148,6 +148,7 @@ public class PotionParser : MonoBehaviour
 
             output += ".";
         }
+        return output;
     }
 
     private EffectSchema CalcEffectSchema(Dictionary<Reagent.ReagentType, int> reagents)

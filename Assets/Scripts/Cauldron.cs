@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cauldron : MonoBehaviour
 {
 	public Dictionary<Reagent.ReagentType, int> Reagents = new Dictionary<Reagent.ReagentType, int>();
+	public SpriteRenderer Glow;
 
 	private void Start()
 	{
@@ -15,6 +16,8 @@ public class Cauldron : MonoBehaviour
 		Reagents.Add(Reagent.ReagentType.Rose, 0);
 		Reagents.Add(Reagent.ReagentType.Skull, 0);
 		Reagents.Add(Reagent.ReagentType.Urn, 0);
+
+		Glow = GameObject.FindGameObjectWithTag("CauldronGlow").GetComponent<SpriteRenderer>();
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +28,14 @@ public class Cauldron : MonoBehaviour
 			return;
 
 		Reagents[reagent.Type]++;
+
+
+		Glow.color = new Color(
+			(Glow.color.r*2 + reagent.Colour.r)/3, 
+			(Glow.color.g*2 + reagent.Colour.g)/3, 
+			(Glow.color.b*2 + reagent.Colour.b)/3,
+			175);
+		
 		Destroy(reagent.gameObject);
 	}
 }

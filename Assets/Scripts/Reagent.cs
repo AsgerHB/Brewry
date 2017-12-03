@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reagent : MonoBehaviour {
-
+public class Reagent : MonoBehaviour
+{
 	public enum ReagentType
 	{
 		Urn,
@@ -17,6 +17,7 @@ public class Reagent : MonoBehaviour {
 	}
 
 	public ReagentType Type;
+	public Color Colour;
 	
 	// Use this for initialization
 	void Start () {

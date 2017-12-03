@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114449095695298846}
   - component: {fileID: 58303352224205874}
   - component: {fileID: 70147944931712426}
+  - component: {fileID: 114000949290337374}
   m_Layer: 0
   m_Name: Rose
   m_TagString: Untagged
@@ -96,6 +97,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.03, y: -0.31}
   m_Size: {x: 0.14, y: 0.65}
   m_Direction: 0
+--- !u!114 &114000949290337374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1365115520768532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0281d37cb964d68b292767c9725c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XBounds: {x: -60, y: -35}
+  YBounds: {x: -1, y: 1e+12}
+  ZBounds: {x: -10, y: 10}
 --- !u!114 &114449095695298846
 MonoBehaviour:
   m_ObjectHideFlags: 1

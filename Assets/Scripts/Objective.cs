@@ -25,7 +25,6 @@ public class Objective : MonoBehaviour {
 		StringBuilder sb = new StringBuilder("Comparing:\n");
 		sb.Append(string.Join(" ", effect.Select(x => x.ToString()).ToArray()));
 		sb.Append(string.Join(" ", CorrectEffect.Select(x => x.ToString()).ToArray()));
-		Debug.Log(sb);
 		
 		
 		//If effects are all correct

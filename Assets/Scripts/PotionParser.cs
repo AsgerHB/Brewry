@@ -11,6 +11,7 @@ public class PotionParser : MonoBehaviour
     public GameObject MessageBox;
     public Text TargetText;
     public Cauldron Cauldron;
+    public GameObject ZalgoMessage;
 
     private Objective _objective;
     
@@ -34,6 +35,21 @@ public class PotionParser : MonoBehaviour
         }
         Debug.Log("Regent input = " + debug);*/
 
+        /*
+         *T͉o̖͔̬̲͙̲ ̬̱͇̘͔̗in̲̦͇̫͚̼v̡͍̜o̧̲̥͈͕k͝e̹̞͎ ̩̩̦͇̹͠ͅt̠̣̟̘̟̣͉h̛̹̹̻͓̺̞̖e͓̭̣͍͙̰̻͠ ̺̯̲ͅͅḥ̬͖̩̫̣i͕͈v̷͓̬̝̬e̙̲͝-m̷͍̹̠̣̯͕̣i̷̳͎̼̰͓ͅn̘̱̟̪͡d̯̬͚ ̻͖̫̥r̡e̶̩̮̦̥̰̙ͅp̱r̦͍̪̪͢ẹ̟̟͎̻̭̲s̱̕e̷̺̝̘͉̭͈ͅn̼͈͎t̶̝i̺̲̰͕͍̫n̸̮͈g͇̙̱̝̠͇͘ ̟̬̹̻͉c̬͉̰̖͖̩̩h̠̺̲a̼̬o̺͕̳ș.͕̺̩͔͠
+         * ̛̥̪̜I̥͟n̷̼̻̼v̭̀o̷̱̩̟̯̼k̷͈i̭͢n̟̩̟͙g̞̖̭͕̘ ͞ͅt͈͈́ͅh̟̩e̸̟͎̝ͅ f̷̞͖̲̺e͇͇e̶̤l̟̭̪̕i̘̜̫̘̞̣̯ņg̟̝ ̺͕o̻͇̪͚͇̬f͎̮̟̝̗ ͏͈̜͉͍̮c̥̮̜̥̙̘̞ha͍̣͔̥̺ͅo̖̮̭̣̥ṣ̳͙̲͈̘͜.̥͚̟͜
+         * W̴̠̞̯i͈͈̫t̵̺͙͚̙̝h̘̩͍̣ ̫̺͙̣̪ͅo̺u͚̭̘̰̟t̢͇͓͈͖̹ ̨ǫ͈̻͇r̦d͔̜̝̲̺̩e̸͓̝̠̼͖̬r̥͙̯.̘̠͓̣̗̥ͅ
+         * ̟̺̣T̴̰͖͍̙͚ͅh̼̟̙e̪̥̼̤͎̯͝ ̢̺͖̘̭̲̻N̰̪̰e̢̯̬͚̣̩͍ẕ̰̬̲p̶͍̙̤̰̠͉ͅe̫̮̰̲r͏̫d̜i̵͇͇a̶̜͓̤͍̬͇͔ṇ̶̮͚̹̗̳ ̶̟h̝͈̳͈̣ͅi̢͕v̦͇͈̫̮̺ͅe͢-̳͇̝̭m͙̩͚̰̘i̪̺̜̭n̯̣ḍ̩̱̦̘ ̴̗o̭̭͔̹̳̹̳f̝̘̪̼̬͔̱ ̱c̲͈h͡a̘o̮̲̖̗̬̜s̥̖͕̜.̨̬̫̪̼̭̰͍ ̳Ẓ̪̥a͓̗l͙̯̩̻̮g͕͓͓͘ò̬̳͍̦ͅ.̪͇
+         * ̜̺͉̳́H̬͠e̟ ͔͔̹̩̲̣͖w̸̬h̙̖̣o͔̠ ̤W̱̟̘̲͢ạḭ͝t̥̬̠̼̞̺̳ṣ̱͖̩̱̼ ͇̖͔̲͢B̡̤ͅe̺h̪̖̜͍͇̞͔͢i͓̝̞͉͉̙̤n̸̲̫̝̣̦͉̱d͟ ̠̗̮̘T̰͔͎̦̳̤͙́h̯͈̯̯̩̘ḛ̠̞̝ ̷͎͖̬W̼̤̫a͖̠͢l̰̠͘l͚̹̻͓.̰͕͉̞͈̪
+         * ̹͙̠̭͇Z̞͙A̗͈͈̠̦L̷G̤͔O!̻́ 
+         */
+        if (reagents[Reagent.ReagentType.Urn] > 10)
+        {
+            ZALGO();
+            Cauldron.Clear();
+            return;
+        }
+        
         int[] effectSchema = CalcEffectSchema(reagents);
 
         String mes = CalcMessage(effectSchema);
@@ -287,5 +303,13 @@ public class PotionParser : MonoBehaviour
     {
         MessageBox.gameObject.SetActive(true);
         TargetText.text = message;
+    }
+
+    void      ZALGO     (         )
+    {
+        if (ZalgoMessage != null)
+        {
+            ZalgoMessage.SetActive(true);
+        }
     }
 }

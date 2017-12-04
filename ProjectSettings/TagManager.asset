@@ -7,6 +7,7 @@ TagManager:
   - CauldronGlow
   - Cauldron
   - Objective
+  - zalgo
   layers:
   - Default
   - TransparentFX

@@ -13,12 +13,9 @@ public class InputControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Escape")) {
-
-            Debug.Log("Scene: " + SceneManager.GetActiveScene().name);
-
+            
             if (SceneManager.GetActiveScene().name.Contains("credits"))
             {
-                Debug.Log("Ending...");
                 Application.Quit();
             }
             else
